@@ -1,6 +1,6 @@
-package dao;
+package DAO;
 
-import dto.DVDLibrary;
+import DTO.DVDLibrary;
 
 import java.util.List;
 

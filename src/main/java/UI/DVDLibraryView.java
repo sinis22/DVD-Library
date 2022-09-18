@@ -1,6 +1,6 @@
-package ui;
+package UI;
 
-import dto.DVDLibrary;
+import DTO.DVDLibrary;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -9,6 +9,7 @@ import java.util.List;
 public class DVDLibraryView {
     private final UserIO io;
 
+    //Display the menu to the user.
     public int printMenuAndGetSelection() {
         io.print("Main Menu");
         io.print("1. List All DVDs");
@@ -20,6 +21,8 @@ public class DVDLibraryView {
 
         return io.readInt("Please select from the above choices.", 1, 6);
     }
+
+    //Allow the user to enter information about the DVD
 
     public DVDLibrary getNewDVD() {
         String title = io.readString("Please enter DVDLibrary Title");
@@ -39,15 +42,18 @@ public class DVDLibraryView {
         currentDVD.setNote(Note);
         return currentDVD;
     }
+    //Display a new message for creating a DVD
     public void displayCreateDVDBanner() {
         io.print("=== Create DVDLibrary ===");
     }
 
+    //Message to show that DVD creation has been successful.
     public void displayCreateSuccessBanner() {
         io.readString(
                 "DVDLibrary successfully created.  Please hit enter to continue");
     }
 
+    //Display all DVDs and their information from the library
     public void displayDVDList(List<DVDLibrary> DVDList) {
         for (DVDLibrary currentDVD : DVDList) {
             String DVDInfo = String.format("%s : %s",
@@ -57,18 +63,23 @@ public class DVDLibraryView {
         }
         io.readString("Please hit enter to continue.");
     }
+    //Show that the DVDs are being displayed.
     public void displayDisplayAllBanner() {
         io.print("=== Display All DVDs ===");
     }
+
+    //Show that the DVDs are being displayed.
 
     public void displayDisplayDVDBanner() {
         io.print("=== Display DVDLibrary ===");
     }
 
+    //Asking for user input to get DVD by title
     public String getDVD() {
         return io.readString("Please enter the DVDLibrary Title.");
     }
 
+    //Show the particular DVD information asked by the user by the title
     public void displayDVD(DVDLibrary DVD) {
         if (DVD != null) {
             io.print("XXXXXXXXXXXXXXXXXX");
@@ -85,10 +96,12 @@ public class DVDLibraryView {
         io.readString("Please hit enter to continue.");
     }
 
+    //Show that the DVDs are being displayed.
     public void displayRemoveDVDBanner() {
         io.print("=== Remove DVDLibrary ===");
     }
 
+    //Display the result of the DVD being removed from the library
     public void displayRemoveResult(DVDLibrary DVDRecord) {
         if(DVDRecord != null){
             io.print("DVDLibrary successfully removed.");
@@ -98,10 +111,12 @@ public class DVDLibraryView {
         io.readString("Please hit enter to continue.");
     }
 
+    //Show that the DVDs are being displayed.
     public void displayEditDVDBanner() {
         io.print("=== Edit DVDLibrary ===");
     }
 
+    //Ask the user to select a category to edit
     public String getCategory() {
         io.print("Please enter the category that you want to change (title, release date, director name, MPAA rating, studio or note:");
         io.print("title");
@@ -113,12 +128,13 @@ public class DVDLibraryView {
         return io.readString();
     }
 
-    //Request a change from the user.
+    //Request what they would like the new information to be
     public String getUpdate() {
         io.print("Please enter your new change that you'd like to make");
         return io.readString();
     }
 
+    //Display to show if the update was successful
     public void displayEditResultBanner(DVDLibrary dvd) {
 
         if(dvd != null) {

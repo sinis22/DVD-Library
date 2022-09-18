@@ -1,6 +1,6 @@
-package dao;
+package DAO;
 
-import dto.DVDLibrary;
+import DTO.DVDLibrary;
 
 import java.io.*;
 import java.time.LocalDate;
@@ -13,6 +13,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     private final String file = "DVDLibrary.txt";
 
     @Override
+    //Add a  DVD by title
     public void addDVD(String title, DVDLibrary DVD) throws DVDLibraryDaoException {
         ReadDVD();
         this.library.put(title, DVD);
@@ -20,18 +21,21 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     }
 
     @Override
+    //Retrieve all DVDs in the Library
     public List<DVDLibrary> getAllDVDs() throws DVDLibraryDaoException {
         ReadDVD();
         return new ArrayList<>(library.values());
     }
 
     @Override
+    //Get a  DVD from the Library
     public DVDLibrary getDVD(String title) throws DVDLibraryDaoException {
         ReadDVD();
         return library.get(title);
     }
 
     @Override
+    //Remove a particular DVD by title
     public DVDLibrary removeDVD(String title) throws DVDLibraryDaoException {
         ReadDVD();
         DVDLibrary removedDVD = library.remove(title);
@@ -40,6 +44,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
     }
 
     @Override
+    //Edit information about the DVD
     public DVDLibrary editDVD(String title, String pieceOfInformation, String change) throws DVDLibraryDaoException {
         ReadDVD();
         DVDLibrary dvd = library.get(title);
@@ -75,6 +80,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
 
     }
 
+    //Add all unmarshalled data into the library
     private void ReadDVD() throws DVDLibraryDaoException {
         Scanner scanner;
         String currentLine;
@@ -94,6 +100,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
         scanner.close();
     }
 
+    //Write all marshalled data into the textfile
     private void WriteDVD() throws DVDLibraryDaoException {
         PrintWriter out;
         String dvd;
@@ -112,6 +119,8 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
         }
         out.close();
     }
+
+    //converting XML content to Java objects
     private DVDLibrary unmarshallDVD(String dvd) {
 
         String [] dvdTokens = dvd.split(DELIMITER);
@@ -133,6 +142,7 @@ public class DVDLibraryDaoFileImpl implements DVDLibraryDao {
         return dvdFromFile;
     }
 
+    //writing Java objects to XML file
     private String marshallDvd(DVDLibrary dvd) {
         String dvdAsText = dvd.getTitle() + DELIMITER;
         dvdAsText += dvd.getReleaseDate() + DELIMITER;

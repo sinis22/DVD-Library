@@ -1,10 +1,10 @@
-import controller.DVDLibraryController;
-import dao.DVDLibraryDao;
-import dao.DVDLibraryDaoException;
-import dao.DVDLibraryDaoFileImpl;
-import ui.DVDLibraryView;
-import ui.UserIO;
-import ui.UserIOConsoleImpl;
+import CONTROLLER.DVDLibraryController;
+import DAO.DVDLibraryDao;
+import DAO.DVDLibraryDaoException;
+import DAO.DVDLibraryDaoFileImpl;
+import UI.DVDLibraryView;
+import UI.UserIO;
+import UI.UserIOConsoleImpl;
 
 public class App {
     public static void main(String[] args) throws DVDLibraryDaoException {
