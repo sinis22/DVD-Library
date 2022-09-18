@@ -1,8 +1,7 @@
-package DAO;
+package dao;
 
-public class DVDLibraryDaoException extends Exception{
-
-	public DVDLibraryDaoException(String message, Throwable cause) {
-		super(message, cause);
-	}
+public class DVDLibraryDaoException extends Exception {
+    public DVDLibraryDaoException(String message, Throwable cause) {
+        super(message, cause);
+    }
 }
